@@ -6,12 +6,16 @@ Autores:
     @joaoreboucas1
     @marcuscardona
 
+## Indíce
+- [Projetos](#projetos)
+- [Colaboradores](#colaboradores)
+ 
 <!-- Projetos -->
 ## Paulo Câmara Flix
 
 O Paulo Câmara Flix é um projeto que utiliza IA para gerar sinopses de filme envolvendo Saulo Câmara.
 
-O projeto faz conexão com a API do twitter e posta sinopses de filmes sobre o herói fictício, Saulo Câmara. As sinopses são geradas pelo Davinci-003, modelo por trás do ChatGPT, desenvolvido pela OpenIa.
+O projeto faz conexão com a API do twitter e posta sinopses de filmes sobre o herói **fictício**, Saulo Câmara. As sinopses são geradas pelo Davinci-003, modelo por trás do ChatGPT, desenvolvido pela OpenIa.
 
  ## 🤝 Colaboradores
 
