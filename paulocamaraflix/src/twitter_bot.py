@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-class twitterBot:
+class twitterBot():
     '''
     Main class for a general Twitter bot using Tweepy
     

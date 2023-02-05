@@ -3,5 +3,5 @@ Escreva um filme de {0} no estilo de {1}.
 Informações sobre o filme:
 Herói: {2} {3}, {4} {5}
 Traços do Herói: {6}
-Vilão: {7}
+{7}: {8}
 Trama: lockdown covid-19

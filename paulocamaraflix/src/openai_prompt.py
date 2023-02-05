@@ -19,7 +19,7 @@ class openaiPrompt():
         Authors:
             @OthersideAI
         '''
-        return Path('../prompts/{0}.txt'.format(filename)).read_text(encoding='UTF-8')
+        return Path('./prompts/{0}.txt'.format(filename)).read_text(encoding='UTF-8')
 
     def get_movie(self):
         """
@@ -37,10 +37,12 @@ class openaiPrompt():
           , random.choice(self.read_prompt('directors').split('\n'))
           , random.choice(self.read_prompt('protagonist_name').split('\n'))
           , random.choice(self.read_prompt('protagonist_surname').split('\n'))
-          , random.choice(self.read_prompt('genre').split('\n'))
-          , random.choice(self.read_prompt('genre').split('\n'))
-          , random.choice(self.read_prompt('adjectives').split('\n'))
           , random.choice(self.read_prompt('occupations').split('\n'))
-          , random.choice(self.read_prompt('ocuppation_complements').split('\n'))
-        )
+          , random.choice(self.read_prompt('occupation_complements').split('\n'))          
+          , random.choice(self.read_prompt('adjectives').split('\n'))
+          , random.choice(self.read_prompt('roles').split('\n'))
+          , random.choice(self.read_prompt('famous_people').split('\n'))
+          
+          )
+        
         return movie_generated
