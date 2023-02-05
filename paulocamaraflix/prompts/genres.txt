@@ -1,0 +1,19 @@
+suspense
+ação
+aventura
+terror
+comédia
+experimental
+cult
+comédia romântica
+drama
+ficção científica
+policial
+lgbt
+esportivo
+fantasia
+musical
+velho oeste
+documentário
+sátira
+biográfico
