@@ -37,15 +37,14 @@ class openaiPrompt():
         # Random choice from the parameters on movie_script
         query = movie_prompt.format(
             random.choice(self.read_prompt('genres').split('\n'))
-          , random.choice(self.read_prompt('directors').split('\n'))
           , random.choice(self.read_prompt('protagonist_name').split('\n'))
           , random.choice(self.read_prompt('protagonist_surname').split('\n'))
           , random.choice(self.read_prompt('occupations').split('\n'))
           , random.choice(self.read_prompt('occupation_complements').split('\n'))          
           , random.choice(self.read_prompt('adjectives').split('\n'))
-          , random.choice(self.read_prompt('roles').split('\n'))
           , random.choice(self.read_prompt('famous_people').split('\n'))
-          
+          , random.choice(self.read_prompt('themes').split('\n'))
+          , random.choice(self.read_prompt('themes').split('\n'))
           )
         # Create Generated Text
         response = openai.Completion.create(
