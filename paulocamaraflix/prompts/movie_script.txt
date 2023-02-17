@@ -2,8 +2,8 @@ Desenvolva um roteiro de um filme do gênero {0} a partir das informações forn
 Protagonista: {1} {2}
 Descrição do Protagonista: {3} {4}
 Característica do Protagonista: {5}
-Coadjuvante: Celso Portiolli
-Antagonista: {6}
-Assunto: {7} e {8}
+Coadjuvante: {6}
+Antagonista: {7}
+Assunto: {8} e {9}
 
 O Roteiro não terá a indicação início de parágrafo e deve ser um texto contínuo
