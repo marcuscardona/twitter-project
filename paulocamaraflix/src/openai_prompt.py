@@ -43,6 +43,7 @@ class openaiPrompt():
           , random.choice(self.read_prompt('occupation_complements').split('\n'))          
           , random.choice(self.read_prompt('adjectives').split('\n'))
           , random.choice(self.read_prompt('famous_people').split('\n'))
+          , random.choice(self.read_prompt('famous_people').split('\n'))
           , random.choice(self.read_prompt('themes').split('\n'))
           , random.choice(self.read_prompt('themes').split('\n'))
           )
