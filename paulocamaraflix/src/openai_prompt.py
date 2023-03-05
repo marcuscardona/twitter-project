@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 import random
 import openai
+from . import tp_logger
 
 class openaiPrompt():
 
@@ -10,11 +11,12 @@ class openaiPrompt():
         load_dotenv()
         self._api_key = os.getenv("OPENAI_API_KEY")
         openai.api_key = self._api_key
+        self._logger = tp_logger.logConstructor(file_name='openAI').createLogger()
 
     def read_prompt(self, filename):
         """
-        Looks in prompts/ directory for a text file. Pass in file name only, not extension.
-        Example: prompts/hello-world.txt -> read_prompt('hello-world')
+        Looks in `prompts/` directory for a text file. Pass in file name only, not extension.
+        Example: `prompts/hello-world.txt` -> read_prompt('hello-world')
 
         Authors:
             @OthersideAI
@@ -22,7 +24,7 @@ class openaiPrompt():
         
         return Path('./prompts/{0}.txt'.format(filename)).read_text(encoding='UTF-8')
 
-    def get_movie(self):
+    def get_movie(self, outputQuery=False):
         """
         Returns a Davinci-003 prompt generated from the movie_script.txt
 
@@ -56,6 +58,10 @@ class openaiPrompt():
         )
 
         # Get the text from the json response
-        generated_movie=response.choices[0].text        
-        
+        generated_movie=response.choices[0].text
+
+        self._logger.info(f'{response.usage.prompt_tokens} prompt + {response.usage.completion_tokens} completion = {response.usage.total_tokens} tokens')
+
+        if outputQuery:
+            return generated_movie, query
         return generated_movie
