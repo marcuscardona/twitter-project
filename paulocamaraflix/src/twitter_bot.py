@@ -68,6 +68,7 @@ class twitterBot():
             for i, tweets in enumerate(list_text):
                 if i == 0:
                     tweet_id = self.client.create_tweet(text=tweets).data['id']
+                    first_id = tweet_id
                     self._logger.info(f'Tweet index {i+1} - Tweet ID: {tweet_id}')
                     time.sleep(10)
                 else:
@@ -77,7 +78,10 @@ class twitterBot():
                     time.sleep(10)
         else:
             tweet_id = self.client.create_tweet(text=text).data['id']
+            first_id = tweet_id
             self._logger.info(f'Tweet index {1} - Tweet ID: {tweet_id}')
+        
+        return int(first_id)
 
     def send_dm(self, recipient_username, text):
         recipient_data = self.client.get_user(username=recipient_username)

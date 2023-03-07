@@ -2,25 +2,25 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.types import Integer
 import mypysql
 import pandas as pd
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
-class sql_connector():
+class sqlConnector():
     
-    def __init__(self, username, password, server, port):
+    def __init__(self, username, password, server, port, database):
         
         self._username = username
         self._password = password
         self._server = str(server)
         self._port = str(port)
         self._engine = create_engine(f'mysql+pymysql://{self._username}:{self._password}@{self._server}:{self._port}')
-        self._database = 'tp'
+        self._database = database
     
     def grantAcess(self):
         """
         
         """
+        pass
+        
     def createDataBase(self, table_name, schema_json):
         """
         Create a database into the MySQL Server
@@ -65,13 +65,12 @@ class sql_connector():
         values_list = []
         for columns, values in json.items():
             columns_list.append(columns)
-            values_list.append(values)
+            values_list.append(str(values))
+        
+        columns = ','.join(columns_list)
+        values = ','.join(values_list)
         with self._engine.connect() as conn:
-        #    df.to_sql(name=table_name
-        #            , con=conn 
-        #            , if_exists='append'
-        #            , index = False)
-            conn.execute(text(f'INSERT INTO {table_name} ({','.join(columns_list)}) VALUES ({','.join(values_list)})'))
+            conn.execute(text(f'INSERT INTO {self._database}.{table_name} ({columns}) VALUES ({values})'))
             conn.commit()
 
     def showDatabases(self):
@@ -79,10 +78,7 @@ class sql_connector():
             result = conn.execute(text('SHOW DATABASES'))
             print(result.all())
 
-sql = sql_connector(username=os.getenv('SQL_USER')
-                  , password=os.getenv('SQL_PASSWORD')
-                  , server=os.getenv('SQL_SERVER')
-                  , port=os.getenv('SQL_PORT'))
-
-df = {'x': 1, 'y':3}
-sql.insertInto('tp.teste_python', df)
+    def dropTable(self, table_name):
+        with self._engine.connect() as conn:
+            conn.execute(text(f"DROP TABLE {self._database}.{table_name}"))
+            conn.commit()

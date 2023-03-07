@@ -17,7 +17,7 @@ class stringUtils():
             else:
                 return text
     
-    def turn_long_text_into_subtexts(self, long_text, subtext_length):
+    def turn_long_text_into_subtexts(self, text, subtext_length):
         """
         Separates a long string into a list of strings whose length is less than `subtext_length`.
 
@@ -32,15 +32,18 @@ class stringUtils():
         Since:
             02-2023.
         """
-        words = long_text.split(' ')
-        tweets = ['']
-        number_of_tweets = 1
-        for word in words:
-            length = len(tweets[number_of_tweets-1])
-            if length < subtext_length-len(word):
-                tweets[number_of_tweets-1] += word+' '
+        phrases = text.split('.')
+        split_text = ['']
+        i = 0
+        for phrase in phrases:
+            if len(phrase) == 0:
+                continue
+            if phrase[0] == '\n':
+                phrase = phrase[1:]
+            phrase = phrase + '.'
+            if len(split_text[i]) < subtext_length - len(phrase):
+                split_text[i] += phrase
             else:
-                tweets.append('')
-                number_of_tweets += 1
-                tweets[number_of_tweets-1] += word+' '
-        return tweets
+                i += 1
+                split_text.append(phrase)
+        return split_text
